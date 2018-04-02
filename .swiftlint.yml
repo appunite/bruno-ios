@@ -1,0 +1,5 @@
+line_length: 240
+
+disabled_rules:
+  - force_cast
+#  - force_try

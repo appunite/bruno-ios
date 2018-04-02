@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202EC6052072E55A002E68AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202EC6042072E55A002E68AF /* AppDelegate.swift */; };
+		202EC6072072E55A002E68AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202EC6062072E55A002E68AF /* ViewController.swift */; };
+		202EC60A2072E55A002E68AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202EC6082072E55A002E68AF /* Main.storyboard */; };
+		202EC60C2072E55A002E68AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 202EC60B2072E55A002E68AF /* Assets.xcassets */; };
+		202EC60F2072E55A002E68AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202EC60D2072E55A002E68AF /* LaunchScreen.storyboard */; };
+		202EC6172072E5CE002E68AF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202EC6142072E5CD002E68AF /* Model.swift */; };
+		202EC6182072E5CE002E68AF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202EC6152072E5CD002E68AF /* TableViewCell.swift */; };
+		202EC6192072E5CE002E68AF /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202EC6162072E5CE002E68AF /* PlaceholderView.swift */; };
+		202EC61C2072E628002E68AF /* payload.json in Resources */ = {isa = PBXBuildFile; fileRef = 202EC61B2072E628002E68AF /* payload.json */; };
+		202EC6232072E940002E68AF /* Bruno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B122902072E25300A2A580 /* Bruno.framework */; };
+		202EC6242072E940002E68AF /* Bruno.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20B122902072E25300A2A580 /* Bruno.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		202EC6292072EB2F002E68AF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202EC6282072EB2F002E68AF /* Kingfisher.framework */; };
 		20B1229A2072E25300A2A580 /* Bruno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B122902072E25300A2A580 /* Bruno.framework */; };
 		20B1229F2072E25300A2A580 /* BrunoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1229E2072E25300A2A580 /* BrunoTests.swift */; };
 		20B122A12072E25300A2A580 /* Bruno.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B122932072E25300A2A580 /* Bruno.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		202EC6252072E940002E68AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20B122872072E25300A2A580 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20B1228F2072E25300A2A580;
+			remoteInfo = Bruno;
+		};
 		20B1229B2072E25300A2A580 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20B122872072E25300A2A580 /* Project object */;
@@ -26,7 +45,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		202EC6272072E940002E68AF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				202EC6242072E940002E68AF /* Bruno.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		202EC6022072E55A002E68AF /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		202EC6042072E55A002E68AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		202EC6062072E55A002E68AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		202EC6092072E55A002E68AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		202EC60B2072E55A002E68AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		202EC60E2072E55A002E68AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		202EC6102072E55A002E68AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		202EC6142072E5CD002E68AF /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		202EC6152072E5CD002E68AF /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		202EC6162072E5CE002E68AF /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		202EC61B2072E628002E68AF /* payload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = payload.json; sourceTree = "<group>"; };
+		202EC6212072E919002E68AF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		202EC6282072EB2F002E68AF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Example/Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		20B122902072E25300A2A580 /* Bruno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bruno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B122932072E25300A2A580 /* Bruno.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bruno.h; sourceTree = "<group>"; };
 		20B122942072E25300A2A580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +86,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		202EC5FF2072E55A002E68AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				202EC6232072E940002E68AF /* Bruno.framework in Frameworks */,
+				202EC6292072EB2F002E68AF /* Kingfisher.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20B1228C2072E25300A2A580 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,12 +113,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202EC6032072E55A002E68AF /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				202EC6042072E55A002E68AF /* AppDelegate.swift */,
+				202EC6062072E55A002E68AF /* ViewController.swift */,
+				202EC6142072E5CD002E68AF /* Model.swift */,
+				202EC6162072E5CE002E68AF /* PlaceholderView.swift */,
+				202EC6152072E5CD002E68AF /* TableViewCell.swift */,
+				202EC60B2072E55A002E68AF /* Assets.xcassets */,
+				202EC61A2072E628002E68AF /* Resources */,
+				202EC61D2072E62F002E68AF /* Storyboards */,
+				202EC6102072E55A002E68AF /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		202EC61A2072E628002E68AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				202EC61B2072E628002E68AF /* payload.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		202EC61D2072E62F002E68AF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				202EC6082072E55A002E68AF /* Main.storyboard */,
+				202EC60D2072E55A002E68AF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		202EC6202072E919002E68AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				202EC6282072EB2F002E68AF /* Kingfisher.framework */,
+				202EC6212072E919002E68AF /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		20B122862072E25300A2A580 = {
 			isa = PBXGroup;
 			children = (
 				20B122922072E25300A2A580 /* Bruno */,
 				20B1229D2072E25300A2A580 /* BrunoTests */,
+				202EC6032072E55A002E68AF /* Example */,
 				20B122912072E25300A2A580 /* Products */,
+				202EC6202072E919002E68AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +171,7 @@
 			children = (
 				20B122902072E25300A2A580 /* Bruno.framework */,
 				20B122992072E25300A2A580 /* BrunoTests.xctest */,
+				202EC6022072E55A002E68AF /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +228,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		202EC6012072E55A002E68AF /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 202EC6132072E55A002E68AF /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				202EC5FE2072E55A002E68AF /* Sources */,
+				202EC5FF2072E55A002E68AF /* Frameworks */,
+				202EC6002072E55A002E68AF /* Resources */,
+				202EC61F2072E8BD002E68AF /* Carthage */,
+				202EC6272072E940002E68AF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				202EC6262072E940002E68AF /* PBXTargetDependency */,
+			);
+			name = Example;
+			productName = Example;
+			productReference = 202EC6022072E55A002E68AF /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 		20B1228F2072E25300A2A580 /* Bruno */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20B122A42072E25300A2A580 /* Build configuration list for PBXNativeTarget "Bruno" */;
@@ -174,6 +294,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = AppUnite.com;
 				TargetAttributes = {
+					202EC6012072E55A002E68AF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					20B1228F2072E25300A2A580 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -191,6 +315,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 20B122862072E25300A2A580;
 			productRefGroup = 20B122912072E25300A2A580 /* Products */;
@@ -199,11 +324,23 @@
 			targets = (
 				20B1228F2072E25300A2A580 /* Bruno */,
 				20B122982072E25300A2A580 /* BrunoTests */,
+				202EC6012072E55A002E68AF /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		202EC6002072E55A002E68AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				202EC60F2072E55A002E68AF /* LaunchScreen.storyboard in Resources */,
+				202EC60C2072E55A002E68AF /* Assets.xcassets in Resources */,
+				202EC61C2072E628002E68AF /* payload.json in Resources */,
+				202EC60A2072E55A002E68AF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20B1228E2072E25300A2A580 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,7 +359,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		202EC61F2072E8BD002E68AF /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Example/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		202EC5FE2072E55A002E68AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				202EC6172072E5CE002E68AF /* Model.swift in Sources */,
+				202EC6182072E5CE002E68AF /* TableViewCell.swift in Sources */,
+				202EC6072072E55A002E68AF /* ViewController.swift in Sources */,
+				202EC6192072E5CE002E68AF /* PlaceholderView.swift in Sources */,
+				202EC6052072E55A002E68AF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20B1228B2072E25300A2A580 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,6 +411,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		202EC6262072E940002E68AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20B1228F2072E25300A2A580 /* Bruno */;
+			targetProxy = 202EC6252072E940002E68AF /* PBXContainerItemProxy */;
+		};
 		20B1229C2072E25300A2A580 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 20B1228F2072E25300A2A580 /* Bruno */;
@@ -250,7 +423,66 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		202EC6082072E55A002E68AF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				202EC6092072E55A002E68AF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		202EC60D2072E55A002E68AF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				202EC60E2072E55A002E68AF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		202EC6112072E55A002E68AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E6WRHQXQE9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Example/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.bruno.example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		202EC6122072E55A002E68AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E6WRHQXQE9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Example/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.bruno.example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		20B122A22072E25300A2A580 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -442,6 +674,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		202EC6132072E55A002E68AF /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				202EC6112072E55A002E68AF /* Debug */,
+				202EC6122072E55A002E68AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		20B1228A2072E25300A2A580 /* Build configuration list for PBXProject "Bruno" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
