@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/appunite/bruno-ios.svg?branch=master)](https://travis-ci.org/appunite/bruno-ios)
+
 # Bruno
 
 This simple lib helps you to represent image in RGB565 format.
