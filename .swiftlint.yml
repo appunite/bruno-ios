@@ -1,5 +1,8 @@
 line_length: 240
-
 disabled_rules:
   - force_cast
-#  - force_try
+type_body_length:
+  warning: 200
+  error: 300
+excluded:
+  - Example/Carthage/

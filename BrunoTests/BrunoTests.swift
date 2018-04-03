@@ -54,19 +54,46 @@ class BrunoTests: XCTestCase {
         }
     }
 
-    func test_encoding_and_decoding_image_should_be_equal() {
-        // load data of random image (8x8)
-        let base64Image = "oRFBEcEZIjMiMwIzxUwkTeQx5jEnMklD6EuuKukyAzOpWqxi7DFxKpZk90OKOqIqIiJiIUMZSypuKu8ZTDIlOmIigRlCKqlCZlPGGcgxiVpCIsEZIyoDM0Q8oirBIaIZoyqhGWMqgyLCIuIZYRFhEeMyYirjOsIqAjNiKsEZwRk="
-        let data = Data(base64Encoded: base64Image)
+    func test_encoding_rgb565() {
+        // laod image
+        let bundle = Bundle.init(for: BrunoTests.self)
+        let sourceImage = UIImage.init(named: "pixels.png", in: bundle, compatibleWith: nil)
 
-        // decode image
-        let decodeImage = data?.decodeRGB565(width: 8, height: 8)
+        // get RGB565 bytes
+        let rgb565 = sourceImage!.encodeRGB565(width: 3, height: 1)!
 
-        // encode image
-        let encodeImage = decodeImage?.encodeRGB565(width: 8, height: 8)
+        // get pixels
+        let array = rgb565.withUnsafeBytes { (pointer: UnsafePointer<UInt16>) -> [UInt16] in
+            let buffer = UnsafeBufferPointer(start: pointer,
+                                             count: 3)
+            return Array<UInt16>(buffer)
+        }
 
-        // check if transformation goes ok
-        XCTAssertEqual(encodeImage, data)
+        XCTAssertEqual(array[0], 0xF800) // test that first 2 bytes should represent RED pixel encoded in RGB565
+        XCTAssertEqual(array[1], 0x07E0) // test that second 2 bytes should represent GREEN pixel encoded in RGB565
+        XCTAssertEqual(array[2], 0x001F) // test that third 2 bytes should represent BLUE pixel encoded in RGB565
+    }
+
+    func test_decoding_rgb565() {
+        // load data of random image (3x1)
+        let base64Image = "APjgBx8A"
+        let data = Data(base64Encoded: base64Image)!
+
+        // get RGB8888 bytes
+        let rgb888 = data
+            .decodeRGB565(width: 3, height: 1)!
+            .buffer(width: 3, height: 1)!
+
+        // get pixels
+        let array = rgb888.bytes.withUnsafeBytes { (pointer: UnsafePointer<UInt32>) -> [UInt32] in
+            let buffer = UnsafeBufferPointer(start: pointer,
+                                             count: 3)
+            return Array<UInt32>(buffer)
+        }
+
+        XCTAssertEqual(array[0], 0xFF0000FF) // test that first 4 bytes should represent RED pixel encoded in RGB8888
+        XCTAssertEqual(array[1], 0xFF00FF00) // test that second 4 bytes should represent GREEN pixel encoded in RGB8888
+        XCTAssertEqual(array[2], 0xFFFF0000) // test that third 4 bytes should represent BLUE pixel encoded in RGB8888
     }
 
     func test_bytes_count() {

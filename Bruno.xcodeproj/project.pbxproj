@@ -19,6 +19,7 @@
 		202EC6232072E940002E68AF /* Bruno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B122902072E25300A2A580 /* Bruno.framework */; };
 		202EC6242072E940002E68AF /* Bruno.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20B122902072E25300A2A580 /* Bruno.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		202EC6292072EB2F002E68AF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202EC6282072EB2F002E68AF /* Kingfisher.framework */; };
+		202EC62B2073E536002E68AF /* pixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 202EC62A2073E536002E68AF /* pixels.png */; };
 		20B1229A2072E25300A2A580 /* Bruno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B122902072E25300A2A580 /* Bruno.framework */; };
 		20B1229F2072E25300A2A580 /* BrunoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1229E2072E25300A2A580 /* BrunoTests.swift */; };
 		20B122A12072E25300A2A580 /* Bruno.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B122932072E25300A2A580 /* Bruno.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +74,7 @@
 		202EC61B2072E628002E68AF /* payload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = payload.json; sourceTree = "<group>"; };
 		202EC6212072E919002E68AF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		202EC6282072EB2F002E68AF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Example/Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		202EC62A2073E536002E68AF /* pixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixels.png; sourceTree = "<group>"; };
 		20B122902072E25300A2A580 /* Bruno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bruno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B122932072E25300A2A580 /* Bruno.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bruno.h; sourceTree = "<group>"; };
 		20B122942072E25300A2A580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		20B122AE2072E40B00A2A580 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				202EC62A2073E536002E68AF /* pixels.png */,
 				20B122AF2072E40B00A2A580 /* kingfisher-1.jpg */,
 				20B122B02072E40B00A2A580 /* kingfisher-3.jpg */,
 			);
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20B122B22072E40B00A2A580 /* kingfisher-1.jpg in Resources */,
+				202EC62B2073E536002E68AF /* pixels.png in Resources */,
 				20B122B32072E40B00A2A580 /* kingfisher-3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
