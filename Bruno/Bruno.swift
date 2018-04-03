@@ -13,57 +13,31 @@ public protocol Bufferable {
     var buffer: vImage_Buffer { get }
     var height: Int { get }
     var width: Int { get }
+    var rowBytes: Int { get }
 }
 
-public extension Bufferable {
-    var height: Int {
-        return Int(buffer.height)
+public class RawBuffer: Bufferable {
+    public private(set) var bytes: Data
+
+    // dimensions
+    public let width: Int
+    public let height: Int
+    public let rowBytes: Int
+
+    public init(data: Data, width: Int, height: Int, rowBytes: Int) {
+        self.bytes = data
+        self.width = width
+        self.height = height
+        self.rowBytes = rowBytes
     }
-    var width: Int {
-        return Int(buffer.width)
-    }
-}
 
-internal class RawBuffer: Bufferable {
-    var buffer: vImage_Buffer
-
-    init(sourceData: Data, width: Int, height: Int, rowBytes: Int) {
-        // save data
-        self._data = sourceData
-
+    public var buffer: vImage_Buffer {
         // get bytes pointer
-        let ptr = _data.withUnsafeBytes {
+        let ptr = bytes.withUnsafeBytes {
             return UnsafeMutablePointer<UInt8>.init(mutating: $0)
         }
 
-        // create vImage_Buffer
-        self.buffer = vImage_Buffer(data: ptr, height: vImagePixelCount(height), width: vImagePixelCount(width), rowBytes: rowBytes)
-    }
-
-    private let _data: Data
-}
-
-internal class ImageBuffer: Bufferable {
-    var buffer: vImage_Buffer
-
-    init?(sourceImage: UIImage) {
-        guard let image = sourceImage.cgImage
-            else { return nil }
-
-        //
-        var format = vImage_CGImageFormat(bitsPerComponent: UInt32(image.bitsPerComponent), bitsPerPixel: UInt32(image.bitsPerPixel), colorSpace: nil, bitmapInfo: image.bitmapInfo, version: 0, decode: nil, renderingIntent: .defaultIntent)
-
-        // init buffer
-        self.buffer = vImage_Buffer()
-        let error = vImageBuffer_InitWithCGImage(&buffer, &format, nil, image, vImage_Flags(kvImageNoFlags))
-
-        // check if error
-        guard error == kvImageNoError
-            else { return nil }
-    }
-
-    deinit {
-        free(buffer.data)
+        return vImage_Buffer(data: ptr, height: vImagePixelCount(height), width: vImagePixelCount(width), rowBytes: rowBytes)
     }
 }
 
@@ -75,7 +49,7 @@ public struct Bruno {
         // create empty data with proper count of bytes
         let rowBytes = width * 3
         let dstData = Data(count: height * rowBytes)
-        let dstBuffer = RawBuffer(sourceData: dstData, width: width, height: height, rowBytes: rowBytes)
+        let dstBuffer = RawBuffer(data: dstData, width: width, height: height, rowBytes: rowBytes)
 
         // mutate buffer
         var buffer565 = srcBuffer.buffer
@@ -96,7 +70,7 @@ public struct Bruno {
         // create empty data with proper count of bytes
         let rowBytes = width * 2
         let dstData = Data(count: height * rowBytes)
-        let dstBuffer = RawBuffer(sourceData: dstData, width: width, height: height, rowBytes: rowBytes)
+        let dstBuffer = RawBuffer(data: dstData, width: width, height: height, rowBytes: rowBytes)
 
         // mutate buffer
         var buffer565 = dstBuffer.buffer
@@ -113,16 +87,12 @@ public struct Bruno {
 
 extension UIImage {
     public func encodeRGB565(width: Int, height: Int) -> Data? {
-        // resize image
-        guard let resizedImage = self.resize(width: width, height: height)
-            else { return nil }
-
-        // create source buffer
-        guard let srcBuffer = ImageBuffer(sourceImage: resizedImage)
+        // resize image and create source buffer
+        guard let srcBytes = self.buffer(width: width, height: height)
             else { return nil }
 
         // encode
-        guard let dstBuffer = Bruno.encode(srcBuffer: srcBuffer)
+        guard let dstBuffer = Bruno.encode(srcBuffer: srcBytes)
             else { return nil }
 
         // get data
@@ -133,7 +103,7 @@ extension UIImage {
 extension Data {
     public func decodeRGB565(width: Int, height: Int) -> UIImage? {
         // create source buffer
-        let srcBuffer = RawBuffer(sourceData: self, width: width, height: height, rowBytes: width * 2)
+        let srcBuffer = RawBuffer(data: self, width: width, height: height, rowBytes: width * 2)
 
         // decode
         guard let dstBuffer = Bruno.decode(srcBuffer: srcBuffer)
@@ -155,20 +125,25 @@ extension Data {
     }
 }
 
-private extension UIImage {
-    func resize(width: Int, height: Int) -> UIImage? {
+internal extension UIImage {
+    func buffer(width: Int, height: Int) -> RawBuffer? {
         guard let cgImage = self.cgImage
             else { return nil }
 
-        // create context for resized image
-        let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
+        // bytes array
+        let rowBytes = 4 * width
+        var bytes = Array<UInt8>.init(repeating: 0, count: rowBytes * height)
 
-        // draw resized image
-        context?.interpolationQuality = .high
-        context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+        // create context for image
+        guard let context = CGContext(data: &bytes, width: width, height: height, bitsPerComponent: 8, bytesPerRow: rowBytes, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
+            else { return nil }
 
-        // get resized image from context
-        return context?.makeImage()
-            .flatMap { UIImage(cgImage: $0) }
+        // fill buffer
+        context.interpolationQuality = .high
+        context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+
+        // create buffer
+        let data = Data(buffer: UnsafeBufferPointer(start: &bytes, count: bytes.count))
+        return RawBuffer(data: data, width: width, height: height, rowBytes: rowBytes)
     }
 }
