@@ -96,7 +96,7 @@ class BrunoTests: XCTestCase {
         XCTAssertEqual(array[2], 0xFFFF0000) // test that third 4 bytes should represent BLUE pixel encoded in RGB8888
     }
 
-    func test_bytes_count() {
+    func test_rgb565_bytes_count() {
         // laod image
         let bundle = Bundle.init(for: BrunoTests.self)
         let sourceImage = UIImage.init(named: "kingfisher-1.jpg", in: bundle, compatibleWith: nil)
@@ -107,4 +107,30 @@ class BrunoTests: XCTestCase {
         // image in encoded in RGB565, so each 2 bytes represents 1 pixel
         XCTAssertEqual(encodeImage?.count, 10 * 10 * 2)
     }
+    
+    func test_rgb565_encoding_performance() {
+        // laod image
+        let bundle = Bundle.init(for: BrunoTests.self)
+        let sourceImage = UIImage.init(named: "kingfisher-1.jpg", in: bundle, compatibleWith: nil)
+        
+        // encode image
+        self.measure {
+            _ = sourceImage?.encodeRGB565(width: 10, height: 10)
+        }
+    }
+
+    func test_rgb565_decoding_performance() {
+        // laod image
+        let bundle = Bundle.init(for: BrunoTests.self)
+        let sourceImage = UIImage.init(named: "kingfisher-1.jpg", in: bundle, compatibleWith: nil)
+
+        // encode image
+        let encodeImage = sourceImage?.encodeRGB565(width: 10, height: 10)
+
+        // decode image
+        self.measure {
+            _ = encodeImage?.decodeRGB565(width: 10, height: 10)
+        }
+    }
+
 }
