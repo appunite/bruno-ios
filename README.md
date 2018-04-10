@@ -28,6 +28,14 @@ If you use [Carthage](https://github.com/Carthage/Carthage), you can add the fol
 github "appunite/bruno-ios" "master"
 ```
 
+### CocoaPods
+
+If your project uses [CocoaPods](https://cocoapods.org), just add the following to your `Podfile`:
+
+``` ruby
+pod 'Bruno', :git => 'https://github.com/appunite/bruno-ios.git'
+```
+
 ### Xcode Sub-project
 
 Submodule, clone, or download Bruno, and drag `Bruno.xcodeproj` into your project.
