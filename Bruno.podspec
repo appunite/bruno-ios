@@ -15,7 +15,6 @@ Pod::Spec.new do |s|
   }
  
   s.platform = s.platform = :ios, "8.0"
-  s.swift_version = "3.2"
   s.social_media_url = "https://www.appunite.com"
 
   s.source = {
